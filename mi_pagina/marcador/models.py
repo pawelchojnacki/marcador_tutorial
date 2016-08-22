@@ -17,3 +17,8 @@ class Bookmark(models.Model):
         User, verbose_name="owner",
         related_name="bookmarks")
     tags = models.ManyToManyField(Tag, blank=True)
+
+    class Meta:
+        verbose_name = "bookmark"
+        verbose_name_plural = "bookmarks"
+        ordering = ["-date_created"]
