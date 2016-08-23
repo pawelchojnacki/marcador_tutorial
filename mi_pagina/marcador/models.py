@@ -4,10 +4,6 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 
-class PublicBookmarkManager(models.Manager):
-    def get_queryset(self):
-        qs = super(PublicBookmarkManager, self).get_queryset
-        return qs.filter(is_public=True)
 
 @python_2_unicode_compatible
 class Tag(models.Model):
@@ -20,6 +16,12 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PublicBookmarkManager(models.Manager):
+    def get_queryset(self):
+        qs = super(PublicBookmarkManager, self).get_queryset
+        return qs.filter(is_public=True)
 
 
 @python_2_unicode_compatible
@@ -35,7 +37,7 @@ class Bookmark(models.Model):
         related_name="bookmarks")
     tags = models.ManyToManyField(Tag, blank=True)
 
-    object = models.Manager()
+    objects = models.Manager()
     public = PublicBookmarkManager()
 
     class Meta:
