@@ -17,4 +17,4 @@ def bookmark_user(request, username):
     else:
         bookmarks = Bookmark.public.filter(owner__username=username)
     context = {"bookmarks": bookmarks, "owner": user}
-    return render(request, "marcador/bookmak_user.html", context)
+    return render(request, "marcador/bookmark_user.html", context)
