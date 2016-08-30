@@ -1,6 +1,5 @@
 from django.conf.urls import url
 
-
 urlpatterns = [
     url(r'^user/(?P<username>[-\w]+)/$', 'marcador.views.bookmark_user',
         name='marcador_bookmark_user'),
