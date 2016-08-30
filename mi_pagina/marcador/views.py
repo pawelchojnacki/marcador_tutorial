@@ -50,9 +50,10 @@ def bookmark_edit(request, pk):
         form = BookmarkForm(instance=bookmark, data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect("marcador_bookmark_user",
+            return redirect(
+                "marcador_bookmark_user",
                 username=request.user.username)
-        else:
-            form = BookmarkForm(instance=bookmark)
-        context = {"form": form, "create": False}
-        return render(request, "marcador/form.html", context)
+    else:
+        form = BookmarkForm(instance=bookmark)
+    context = {"form": form, "create": False}
+    return render(request, "marcador/form.html", context)

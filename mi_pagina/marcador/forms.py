@@ -1,9 +1,9 @@
 from django.forms import ModelForm
 
-from .models import bookmark_user
+from .models import Bookmark
 
 
 class BookmarkForm(ModelForm):
     class Meta:
         model = Bookmark
-        exlude = ("date_created", "date_updated", "owner")
+        exclude = ("date_created", "date_updated", "owner")
