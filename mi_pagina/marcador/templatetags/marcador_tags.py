@@ -21,7 +21,7 @@ def tagcloud(context, owner=None):
     if context["user"] == owner:
         del filters["bookmark__is_public"]
 
-    tags = Tag.object.filter(**filters)
+    tags = Tag.objects.filter(**filters)
     tags = tags.annotate(count=models.Count("bookmark"))
     tags = tags.order_by("name").values_list("name", "count")
     fmt = '<a href="%s?tag={0}">{0} ({1})</a>' % url
