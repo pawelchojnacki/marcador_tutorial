@@ -22,7 +22,7 @@ def bookmark_user(request, username):
     else:
         bookmarks = Bookmark.public.filter(owner__username=username)
     if request.GET.get("tag"):
-        bookmarks - bookmarks.filter(tags__name=request.GET[]"tag")
+        bookmarks = bookmarks.filter(tags__name=request.GET["tag"])
     context = {"bookmarks": bookmarks, "owner": user}
     return render(request, "marcador/bookmark_user.html", context)
 
